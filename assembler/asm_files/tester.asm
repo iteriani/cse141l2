@@ -130,19 +130,6 @@ SW    $R12,$R5   // Indicate failed test
 CONT3:
 SW    $R10,$R5   // Indicate passed test
 
-.constreg $C9, 0x10000000
-//.constreg $C4, 0x00000001
-//ADDU $R5, %ONE
-//OR $R7, $C9 //get value into R5
-//ROFL $R7, %FOUR // barrel shift 4 bits, so output should be 0x00000001
-//SUBU $R7,  %ONE
-//BEQZ $R7, ROFLNO
-//SW $R11, $R5
-//SW $R12, $R5
-
-//ROFLNO:
-//SW $R10, $R5
-
 // Test for JALR
 ADDU  $R5,%ONE
 .const %NEXT     , NEXT
@@ -295,6 +282,16 @@ MOV   $R7,%SHIFT_INP
 SRLV  $R7,%ONE
 MOV   $R6,%SRLV_ANS
 JALR  $R1,%CHECK
+
+
+// Test for ROTL
+.const %ROT1, 0x10000000
+.const %ROT2, 0x00000001
+ADDU $R5, %ONE
+OR $R7, %ROT1 //get value into R5
+ROFL $R7, %FOUR // barrel shift 4 bits, so output should be 0x00000001
+MOV $R6, %ROT2
+JALR, $R1, %CHECK
 
 // We can check the correctness of BAR instrution 
 // through the output barrier signal.
