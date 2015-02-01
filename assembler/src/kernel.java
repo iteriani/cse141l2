@@ -131,6 +131,7 @@ class kernel{
 			case SLLV:
 			case SRAV:
 			case SRLV:
+            case ROFL:
             case AND:
             case OR:
             case NOR: 
