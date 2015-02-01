@@ -130,6 +130,19 @@ SW    $R12,$R5   // Indicate failed test
 CONT3:
 SW    $R10,$R5   // Indicate passed test
 
+.constreg $C9, 0x10000000
+//.constreg $C4, 0x00000001
+ADDU $R5, %ONE
+OR $R7, $C9 //get value into R5
+ROFL $R7, %FOUR // barrel shift 4 bits, so output should be 0x00000001
+SUBU $R7,  %ONE
+BEQZ $R7, ROFLNO
+SW $R11, $R5
+SW $R12, $R5
+
+ROFLNO:
+SW $R10, $R5
+
 // Test for JALR
 ADDU  $R5,%ONE
 .const %NEXT     , NEXT

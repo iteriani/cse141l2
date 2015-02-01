@@ -69,7 +69,7 @@ class kernel{
 
     /** An enumuration for opcodes */
     public static enum opcodes {
-		ADDU, SUBU, SLLV, SRAV, SRLV, AND, OR, NOR, SLT, SLTU, MOV, LW, LBU, SW, SB, JALR,
+		ADDU, SUBU, SLLV, SRAV, SRLV, AND, OR, NOR, SLT, SLTU, MOV, LW, LBU, SW, SB, JALR, ROFL,
         BEQZ, BNEQZ, BGTZ, BLTZ,
         DONE, BAR, NOTVALID;
   
@@ -110,6 +110,7 @@ class kernel{
 		opcodeTable.put("BLTZ" , "10011");
 		opcodeTable.put("DONE" , "01100");
 		opcodeTable.put("BAR"  , "01100");
+        opcodeTable.put("ROFL"  , "01011");
 	}
 
 
